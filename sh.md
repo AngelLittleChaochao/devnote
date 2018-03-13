@@ -17,6 +17,13 @@ val2="${hashmap["key2"]}"
 
 echo "$val1" "$val2"
 
+iterate hashmap
+for i in "${!hashmap[@]}"
+do
+  echo "key  : $i"
+  echo "value: ${hashmap[$i]}"
+done
+
 ## compare string and if else
 
 if [ "$val" == "hello" ]; then
@@ -25,3 +32,22 @@ elif [ "$val" == "world" ]
     echo "world"
 fi
 
+
+## jq command
+raw lines to array
+if test.txt is like:
+    aaaaa
+	bbbbb
+	
+> jq --raw-input --slurp 'split("\n")' test.txt
+   ["aaaaa",
+   "bbbbb"
+   ""
+   ]
+   
+> jq --raw-input --slurp 'split("\n")|.[0:-1]' test.txt   
+   '| [0:-1]' is to remove last line 
+   ["aaaaa",
+   "bbbbb"
+   ]
+    
